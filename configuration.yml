@@ -1,0 +1,12 @@
+---
+- name: Configure Ansible Controller
+  hosts: ansible-lab-controller
+  tasks:
+  - name: Ensure latest Ansible versions
+    become: yes
+    ansible.builtin.package:
+      name: 
+      - ansible
+      - git
+      state: latest
+
