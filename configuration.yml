@@ -9,4 +9,3 @@
       - ansible
       - git
       state: latest
-
