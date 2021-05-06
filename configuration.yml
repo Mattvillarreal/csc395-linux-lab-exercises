@@ -61,7 +61,7 @@
       enabled: no
       state: stopped
   - name: Set dnsmasq configuration file
-      ansible.builtin.copy:
+      copy:
         src: ./files/dnsmasq.conf
         dest: /etc/dnsmasq.conf
         owner: root
