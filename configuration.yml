@@ -61,13 +61,13 @@
       enabled: no
       state: stopped
   - name: Set dnsmasq configuration file
-      copy:
-        src: ./files/dnsmasq.conf
-        dest: /etc/dnsmasq.conf
-        owner: root
-        group: root
-        mode: '0644'
-      notify: Restart dnsmasq
+    copy:
+      src: ./files/dnsmasq.conf
+      dest: /etc/dnsmasq.conf
+      owner: root
+      group: root
+      mode: '0644'
+    notify: Restart dnsmasq
   
   handlers:
   - name : Restart dnsmasq
