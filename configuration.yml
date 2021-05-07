@@ -20,6 +20,7 @@
       stig_version: rhel7
       security_enable_pwquality_password_set: yes
       security_password_max_lifetime_days: 90
+    tags: hardening
 
 - name: Configure DNS Server
   hosts: ansible-lab-host1
