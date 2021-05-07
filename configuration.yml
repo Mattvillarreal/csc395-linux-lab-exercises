@@ -130,8 +130,8 @@
   - name:  Custom Website
     become: true
     ansible.builtin.copy:
-      src: website.html
-      dest: /var/www/html/website.html
+      src: index.html
+      dest: /var/www/html/index.html
       owner: root
       group: root
       mode: '0644'         
