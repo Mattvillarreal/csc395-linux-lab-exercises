@@ -75,3 +75,63 @@
       name: dnsmasq
       enabled: yes
       state: started
+    
+ - name: Configure Samba server
+  hosts: ansible-lab-host2
+  vars: 
+    ansible_become: true
+  roles:
+  - bertvv.samba
+
+- name: Configure Samba client
+  hosts: ansible-lab-host3
+  tags: Samba
+  vars:
+    ansible_become: true
+  tasks:
+  - name: Install client deps
+    package:
+      name: cifs-utils
+      state: latest
+  - name: Create credential file
+    template:
+      src: ./files/.smbpasswd
+      dest: /home/{{ admin_un }}/.smbpasswd
+      owner: '{{ admin_un }}'
+      group: '{{ admin_un }}'
+      mode: '0600'
+  - name: Add share mount
+    mount:
+      src: //10.1.2.5/sambashare
+      path: /mnt/smbshare
+      fstype: "cifs"
+      opts: credentials=/home/{{ admin_un }}/.smbpasswd
+      state: "mounted"
+  - name: Set mount as writeable
+    file:
+      path: /mnt/smbshare
+      state: directory
+      mode: '0777'
+
+  - name: Installing nginx
+    become: true
+    hosts: ansible-lab-host3
+    tasks:
+      - name: Installing nginx
+        apt: name=nginx state=latest
+     - name: start nginx
+       service:
+            name: nginx
+           state: started
+
+  - name: Custom Website
+    hosts: ansible-lab-host3
+    tasks:
+    - name:  Custom Website
+     become: true
+      ansible.builtin.copy:
+        src: files/index.nginx-debian.html
+        dest: /var/www/html/index.nginx-debian.html
+        owner: root
+        group: root
+       mode: '0644'         
