@@ -76,7 +76,7 @@
       enabled: yes
       state: started
     
- - name: Configure Samba server
+  - name: Configure Samba server
   hosts: ansible-lab-host2
   vars: 
     ansible_become: true
