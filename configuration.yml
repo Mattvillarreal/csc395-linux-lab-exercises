@@ -68,13 +68,12 @@
       group: root
       mode: '0644'
     notify: Restart dnsmasq
-  
   handlers:
   - name : Restart dnsmasq
     ansible.builtin.service:
       name: dnsmasq
       enabled: yes
-      state: started
+      state: restarted
     
 - name: Configure Samba server
   hosts: ansible-lab-host2
@@ -113,25 +112,25 @@
       state: directory
       mode: '0777'
 
-  - name: Installing nginx
-    become: true
-    hosts: ansible-lab-host3
-    tasks:
-      - name: Installing nginx
-        apt: name=nginx state=latest
-      - name: start nginx
-        service:
-            name: nginx
-            state: started
+- name: Installing nginx
+  become: true
+  hosts: ansible-lab-host3
+  tasks:
+    - name: Installing nginx
+      apt: name=nginx state=latest
+    - name: start nginx
+      service:
+          name: nginx
+          state: started
 
-  - name: Custom Website
-    hosts: ansible-lab-host3
-    tasks:
-    - name:  Custom Website
-      become: true
-      ansible.builtin.copy:
-        src: files/index.nginx-debian.html
-        dest: /var/www/html/index.nginx-debian.html
-        owner: root
-        group: root
-        mode: '0644'         
+- name: Custom Website
+  hosts: ansible-lab-host3
+  tasks:
+  - name:  Custom Website
+    become: true
+    ansible.builtin.copy:
+      src: files/index.nginx-debian.html
+      dest: /var/www/html/index.nginx-debian.html
+      owner: root
+      group: root
+      mode: '0644'         
