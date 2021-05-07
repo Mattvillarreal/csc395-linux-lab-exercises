@@ -129,8 +129,8 @@
   - name:  Custom Website
     become: true
     ansible.builtin.copy:
-      src: files/index.nginx-debian.html
-      dest: /var/www/html/index.nginx-debian.html
+      src: website.html
+      dest: /var/www/html/index.website.html
       owner: root
       group: root
       mode: '0644'         
