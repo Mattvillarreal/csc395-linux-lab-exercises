@@ -96,7 +96,7 @@
   - name: Create credential file
     template:
       src: smbpasswd
-      dest: {{ admin_un }}/.smbpasswd
+      dest: {{ admin_un }} smbpasswd
       owner: '{{ admin_un }}'
       group: '{{ admin_un }}'
       mode: '0600'
