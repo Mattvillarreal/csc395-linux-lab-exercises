@@ -63,7 +63,7 @@
       state: stopped
   - name: Set dnsmasq configuration file
     copy:
-      src: /dnsmasq.conf
+      src: dnsmasq.conf
       dest: /etc/dnsmasq.conf
       owner: root
       group: root
