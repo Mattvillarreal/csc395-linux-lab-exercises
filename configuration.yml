@@ -80,7 +80,7 @@
   vars: 
     ansible_become: true
   roles:
-  - bertvv.samba
+    - bertvv.samba
 
 - name: Configure Samba client
   hosts: ansible-lab-host3
@@ -130,7 +130,7 @@
     become: true
     ansible.builtin.copy:
       src: website.html
-      dest: /var/www/html/index.website.html
+      dest: /var/www/html/index.we.html
       owner: root
       group: root
       mode: '0644'         
