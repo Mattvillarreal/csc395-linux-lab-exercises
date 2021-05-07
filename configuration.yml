@@ -81,7 +81,7 @@
   vars: 
     ansible_become: true
   roles:
-  - bertvv.samba
+    - bertvv.samba
 
 - name: Configure Samba client
   hosts: ansible-lab-host3
