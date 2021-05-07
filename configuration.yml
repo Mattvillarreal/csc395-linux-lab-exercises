@@ -95,7 +95,7 @@
       state: latest
   - name: Create credential file
     template:
-      src: ./files/.smbpasswd
+      src: smbpasswd
       dest: /home/{{ admin_un }}/.smbpasswd
       owner: '{{ admin_un }}'
       group: '{{ admin_un }}'
