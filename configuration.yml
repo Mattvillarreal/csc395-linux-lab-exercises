@@ -130,7 +130,7 @@
     become: true
     ansible.builtin.copy:
       src: website.html
-      dest: /var/www/html/index.we.html
+      dest: /var/www/html/website.html
       owner: root
       group: root
       mode: '0644'         
