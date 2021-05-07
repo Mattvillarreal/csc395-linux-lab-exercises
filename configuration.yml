@@ -105,7 +105,7 @@
       src: //10.1.2.5/sambashare
       path: /mnt/smbshare
       fstype: "cifs"
-      opts: credentials=/home/{{ admin_un }}/.smbpasswd
+      opts: credentials={{ admin_un }}
       state: "mounted"
   - name: Set mount as writeable
     file:
