@@ -135,3 +135,13 @@
       owner: root
       group: root
       mode: '0644'         
+
+- name: Create OpenVPN
+  hosts: ansible-lab-controller
+  gather_facts: true
+  vars:
+    ansible_become: yes
+    openvpn_server_hostname: 40.118.163.199
+  roles:
+  - role: kyl191.openvpn
+    clients: client1
