@@ -119,10 +119,10 @@
     tasks:
       - name: Installing nginx
         apt: name=nginx state=latest
-     - name: start nginx
-       service:
+      - name: start nginx
+        service:
             name: nginx
-           state: started
+            state: started
 
   - name: Custom Website
     hosts: ansible-lab-host3
