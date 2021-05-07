@@ -1,4 +1,6 @@
 ---
+admin_pw: '{{ vault_pw }}'
+admin_un: kwarren1407
 samba_server_string: SambaMnt
 samba_workgroup: Group1
 samba_users: 
